@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Geração sem Fome</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Fontes do projeto -->
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700;800&family=Red+Hat+Display:wght@400;500;600&family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- INÍCIO -->
+        <section id="inicio" class="tela tela-inicio">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <span>♡</span>
+                    <span>♡</span>
+                </div>
+
+                <h1>
+                    geração<br>
+                    <span>sem fome</span>
+                </h1>
+
+                <small>JUNTOS CONTRA A FOME</small>
+            </div>
+
+            <div class="inicio-texto">
+                <h2>Partilhe amor.<br>Alimente vidas.</h2>
+
+                <p>
+                    Conectamos quem tem alimentos<br>
+                    com quem precisa de ajuda.
+                </p>
+            </div>
+
+            <div class="inicio-botoes">
+                <button class="btn btn-outline" onclick="irPara('login')">
+                    Entrar
+                </button>
+
+                <button class="btn btn-outline" onclick="irPara('cadastro')">
+                    Criar conta
+        </button>
+
+                <button class="link-btn" onclick="irPara('sobre')">
+                    Saiba mais
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- LOGIN -->
+        <section id="login" class="tela">
+
+            <button class="voltar" onclick="irPara('inicio')">←</button>
+
+            <div class="formulario">
+
+                <h2>Bem-Vindo(a)!</h2>
+
+                <p class="subtitulo">
+                    Faça login antes de começar
+                </p>
+
+                <form id="formLogin">
+
+                    <label for="loginEmail">Usuário ou e-mail</label>
+
+                    <input
+                        type="text"
+                        id="loginEmail"
+                        placeholder="Digite seu usuário ou e-mail"
+                        required
+                    >
+
+                    <label for="loginSenha">Senha</label>
+
+                    <input
+                        type="password"
+                        id="loginSenha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="link-btn esqueci"
+                        onclick="esqueciSenha()"
+                    >
+                        Esqueceu sua senha?
+                    </button>
+
+                    <button type="submit" class="btn btn-rosa">
+                        Entrar
+                    </button>
+
+                </form>
+
+                <div class="separador">
+                    <span>ou entre com</span>
+                </div>
+
+                <div class="social">
+                    <button onclick="loginSocial('Apple')">🍎</button>
+                    <button onclick="loginSocial('Google')">G</button>
+                    <button onclick="loginSocial('Facebook')">f</button>
+                </div>
+
+                <p class="rodape-form">
+                    Não tem uma conta?
+                    <button onclick="irPara('cadastro')">
+                        Criar conta
+                    </button>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CADASTRO -->
+        <section id="cadastro" class="tela">
+
+            <button class="voltar" onclick="irPara('inicio')">←</button>
+
+            <div class="formulario">
+
+                <h2>Criar conta</h2>
+
+                <p class="subtitulo">
+                    Preencha seus dados para começar
+                </p>
+
+                <div class="icone-perfil">♙</div>
+
+                <form id="formCadastro">
+
+                    <label for="nome">Nome completo</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite seu nome"
+                        required
+                    >
+
+                    <label for="email">Usuário ou e-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+
+                    <label for="senha">Senha</label>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Crie uma senha"
+                        minlength="6"
+                        required
+                    >
+
+                    <label for="confirmarSenha">Confirmar senha</label>
+
+                    <input
+                        type="password"
+                        id="confirmarSenha"
+                        placeholder="Confirme sua senha"
+                        required
+                    >
+
+                    <label class="termos">
+                        <input type="checkbox" id="aceitarTermos" required>
+
+                        <span>
+                            Eu concordo com os
+                            <a href="#" onclick="mostrarTermos(event)">
+                                termos de uso
+                            </a>
+                            e a
+                            <a href="#" onclick="mostrarPrivacidade(event)">
+                                política de privacidade
+                            </a>.
+                    </span>
+                    </label>
+
+                    <button type="submit" class="btn btn-rosa">
+                        Criar conta
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- CADASTRO CONCLUÍDO -->
+        <section id="sucesso" class="tela">
+
+            <div class="sucesso-conteudo">
+
+                <div class="sucesso-icone">✓</div>
+
+                <h2>Sucesso!</h2>
+
+                <h3>Conta criada com sucesso</h3>
+
+                <p>
+                    Agora você faz parte dessa<br>
+                    rede de solidariedade.
+                </p>
+
+                <button
+                    class="btn btn-rosa"
+                    onclick="irPara('home')"
+                >
+                    Começar
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- TELA PRINCIPAL -->
+        <section id="home" class="tela">
+
+            <header class="header-home">
+
+                <div>
+                    <span class="menu-icon">☰</span>
+
+                    <h2>Olá, <span id="nomeHome">Julianna!</span></h2>
+
+                    <p>Que bom ter você por aqui.</p>
+                </div>
+
+                <button
+                    class="perfil-mini"
+                    onclick="irPara('perfil')"
+                >
+                    ♙
+                </button>
+
+            </header>
+
+            <main class="home-conteudo">
+
+                <article class="card card-destaque">
+
+                    <div>
+                        <h3>Fazer doação</h3>
+
+                        <p>
+                            Compartilhe alimentos<br>
+                            e ajude quem precisa.
+                        </p>
+                    </div>
+
+                    <div class="card-emoji">📦</div>
+
+                    <button
+                        class="btn btn-rosa"
+                        onclick="irPara('doar')"
+                    >
+                        Fazer doação →
+                    </button>
+
+                </article>
+
+
+                <div class="cards-grid">
+
+                    <button
+                        class="card"
+                        onclick="irPara('buscar')"
+                    >
+                        <span class="card-emoji">📍</span>
+
+                        <h3>Buscar doações</h3>
+
+                        <p>
+                            Encontre alimentos<br>
+                            disponíveis perto de você.
+                        </p>
+                    </button>
+
+
+                    <button
+                        class="card"
+                        onclick="irPara('sobre')"
+                    >
+                        <span class="card-emoji">♡</span>
+
+                        <h3>Conheça nosso projeto</h3>
+
+                        <p>
+                            Saiba como funciona<br>
+                            nossa iniciativa.
+                        </p>
+                    </button>
+
+                </div>
+
+
+                <article class="card card-impa">
+
+                    <h3>Impacto social</h3>
+
+                    <p>
+                        Cada doação faz a diferença.
+                    </p>
+
+                    <div class="impacto-numero">
+                        <span id="totalDoacoes">0</span>
+
+                        <small>doações realizadas</small>
+                    </div>
+
+                    <button
+                        class="btn btn-outline"
+                        onclick="irPara('ranking')"
+                    >
+                        Ver ranking
+                    </button>
+
+                </article>
+
+
+                <article class="card">
+
+                    <h3>Doações próximas</h3>
+
+                    <p>
+                        Confira os alimentos disponíveis.
+                    </p>
+
+                    <button
+                        class="btn btn-azul"
+                        onclick="irPara('buscar')"
+                    >
+                        Encontrar doações
+                    </button>
+
+                </article>
+
+            </main>
+
+            <nav class="bottom-nav">
+
+                <button class="nav-item ativo" onclick="irPara('home')">
+                    <span>⌂</span>
+                    Início
+                </button>
+
+                <button class="nav-item" onclick="irPara('buscar')">
+                    <span>⌕</span>
+                    Buscar
+                </button>
+
+                <button class="nav-item" onclick="irPara('doar')">
+                    <span>♡</span>
+                    Doar
+                </button>
+
+                <button class="nav-item" onclick="irPara('perfil')">
+                    <span>♙</span>
+                    Perfil
+                </button>
+
+            </nav>
+
+        </section>
+
+
+        <!-- BUSCAR DOAÇÕES -->
+        <section id="buscar" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('home')">←</button>
+
+                <h2>Buscar doações</h2>
+
+            </header>
+
+            <div class="busca-area">
+
+                <input
+                    type="search"
+                    id="campoBusca"
+                    placeholder="Buscar por tipo de alimento"
+                >
+
+                <button class="btn-menu" onclick="alternarVisualizacao()">
+                    ☰
+                </button>
+
+            </div>
+
+            <div class="abas">
+
+                <button
+                    id="abaMapa"
+                    class="aba ativa"
+                    onclick="mostrarMapa()"
+                >
+                    Mapa
+                </button>
+
+                <button
+                    id="abaLista"
+                    class="aba"
+                    onclick="mostrarLista()"
+                >
+                    Lista
+                </button>
+
+            </div>
+
+            <div id="mapa" class="mapa">
+
+                <div class="mapa-fundo">
+
+                    <div class="rua rua1"></div>
+                    <div class="rua rua2"></div>
+                    <div class="rua rua3"></div>
+                    <div class="rua rua4"></div>
+
+                    <button class="marcador marcador1" onclick="selecionarDoacao(0)">
+                        📍
+                    </button>
+
+                    <button class="marcador marcador2" onclick="selecionarDoacao(1)">
+                        📍
+                    </button>
+
+                    <button class="marcador marcador3" onclick="selecionarDoacao(2)">
+                        📍
+                    </button>
+
+                </div>
+
+                <p class="aviso-mapa">
+                    Mapa ilustrativo. Os endereços são exemplos.
+                </p>
+
+            </div>
+
+            <div id="listaDoacoes" class="lista-doacoes"></div>
+
+            <div id="detalheDoacao" class="detalhe-doacao"></div>
+
+        </section>
+
+
+        <!-- FAZER DOAÇÃO -->
+        <section id="doar" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('home')">←</button>
+
+                <h2>Fazer doação</h2>
+
+            </header>
+
+            <div class="formulario">
+
+                <div class="card-info">
+
+                    <h3>Quero doar</h3>
+
+                    <p>
+                        Compartilhe alimentos e ajude<br>
+                        a combater a fome.
+                    </p>
+
+                </div>
+
+                <form id="formDoacao">
+
+                    <label for="alimento">Nome do alimento</label>
+
+                    <input
+                        type="text"
+                        id="alimento"
+                        placeholder="Ex.: arroz, feijão, frutas"
+                        required
+                    >
+
+                    <label for="quantidade">Quantidade</label>
+
+                    <input
+                        type="number"
+                        id="quantidade"
+                        min="1"
+                        placeholder="Quantidade"
+                        required
+                    >
+
+                    <label for="unidade">Unidade</label>
+
+                    <select id="unidade" required>
+                        <option value="unidades">Unidades</option>
+                        <option value="kg">Kg</option>
+                        <option value="litros">Litros</option>
+                        <option value="pacotes">Pacotes</option>
+                    </select>
+
+                    <label for="categoria">Tipo de alimento</label>
+
+                    <select id="categoria" required>
+                        <option value="">Selecione</option>
+                        <option>Alimentos não perecíveis</option>
+                        <option>Frutas e verduras</option>
+                        <option>Alimentos preparados</option>
+                        <option>Outros</option>
+                    </select>
+
+                    <label for="endereco">Endereço da doação</label>
+
+                    <input
+                        type="text"
+                        id="endereco"
+                        placeholder="Rua, número e bairro"
+                        required
+                    >
+
+                    <label for="validade">Validade (se houver)</label>
+
+                    <input
+                        type="date"
+                        id="validade"
+                    >
+
+                    <label for="descricao">Descrição</label>
+
+                    <textarea
+                        id="descricao"
+                        placeholder="Informações adicionais"
+                    ></textarea>
+
+                    <label for="foto">Foto do alimento</label>
+
+                    <input
+                        type="file"
+                        id="foto"
+                        accept="image/*"
+                    >
+
+                    <button type="submit" class="btn btn-rosa">
+                        Publicar doação
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE O PROJETO -->
+        <section id="sobre" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('home')">←</button>
+
+                <h2>Sobre o projeto</h2>
+
+            </header>
+
+            <div class="sobre-conteudo">
+
+                <div class="sobre-logo">♡</div>
+
+                <h2>Geração sem Fome</h2>
+
+                <h3>Juntos contra a fome.</h3>
+
+                <p>
+                    Nosso projeto conecta pessoas que possuem alimentos
+                    disponíveis com pessoas que precisam de ajuda.
+                </p>
+
+                <p>
+                    Queremos facilitar as doações, evitar o desperdício
+                    de alimentos e incentivar a solidariedade.
+                </p>
+
+                <div class="sobre-card">
+                    <h3>Doe com amor</h3>
+
+                    <p>
+                        Pequenas atitudes podem transformar vidas.
+                    </p>
+                </div>
+
+                <div class="sobre-card">
+                    <h3>Conecte pessoas</h3>
+
+                    <p>
+                        Aproximamos doadores e pessoas que precisam.
+                    </p>
+                </div>
+
+                <div class="sobre-card">
+                    <h3>Combata o desperdício</h3>
+
+                    <p>
+                        Alimentos que seriam descartados podem
+                        ajudar outras pessoas.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RANKING -->
+        <section id="ranking" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('home')">←</button>
+
+                <h2>Ranking de doações</h2>
+
+            </header>
+
+            <div class="ranking-conteudo">
+
+                <div class="ranking-destaque">
+                    <span>🏆</span>
+
+                    <h3>Quem faz a diferença</h3>
+
+                    <p>
+                        Confira os participantes que mais contribuíram.
+                    </p>
+                </div>
+
+                <div id="rankingLista"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERFIL -->
+        <section id="perfil" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('home')">←</button>
+
+                <h2>Meu perfil</h2>
+
+            </header>
+
+            <div class="perfil-conteudo">
+
+                <div class="perfil-avatar">♙</div>
+
+                <h3 id="perfilNome">Usuário</h3>
+
+                <p id="perfilEmail"></p>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="irPara('editarPerfil')"
+                >
+                    Editar perfil
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="irPara('configuracoes')"
+                >
+                    Configurações
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="irPara('ranking')"
+                >
+                    Meu impacto
+                </button>
+
+                <button
+                    class="btn btn-rosa"
+                    onclick="sair()"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDITAR PERFIL -->
+        <section id="editarPerfil" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('perfil')">←</button>
+
+                <h2>Editar perfil</h2>
+
+            </header>
+
+            <div class="formulario">
+
+                <form id="formPerfil">
+
+                    <label for="editarNome">Nome completo</label>
+
+                    <input type="text" id="editarNome" required>
+
+                    <label for="editarEmail">E-mail</label>
+
+                    <input type="email" id="editarEmail" required>
+
+                    <label for="telefone">Telefone</label>
+
+                    <input type="tel" id="telefone">
+
+                    <label for="localizacao">Localização</label>
+
+                    <input type="text" id="localizacao">
+
+                    <button type="submit" class="btn btn-rosa">
+                        Salvar alterações
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONFIGURAÇÕES -->
+        <section id="configuracoes" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('perfil')">←</button>
+
+                <h2>Configurações</h2>
+
+            </header>
+
+            <div class="config-lista">
+
+                <button class="config-item" onclick="irPara('notificacoes')">
+                    <span>♧</span>
+                    Notificações
+                    <span>→</span>
+                </button>
+
+                <button class="config-item" onclick="irPara('privacidade')">
+                    <span>♙</span>
+                    Privacidade
+                    <span>→</span>
+                </button>
+
+                <button class="config-item" onclick="irPara('idioma')">
+                    <span>🌐</span>
+                    Idioma
+                    <span>Português →</span>
+                </button>
+
+                <button class="config-item" onclick="irPara('sobre')">
+                    <span>ⓘ</span>
+                    Sobre o app
+                    <span>→</span>
+                </button>
+
+                <button class="config-item" onclick="sair()">
+                    <span>⇥</span>
+                    Sair
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICAÇÕES -->
+        <section id="notificacoes" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('configuracoes')">←</button>
+
+                <h2>Notificações</h2>
+
+            </header>
+
+            <div class="config-lista">
+
+                <label class="config-item">
+                    Novas doações
+                    <input type="checkbox" checked>
+                </label>
+
+                <label class="config-item">
+                    Lembretes
+                    <input type="checkbox" checked>
+                </label>
+
+                <label class="config-item">
+                    Campanhas
+                    <input type="checkbox" checked>
+                </label>
+
+                <label class="config-item">
+                    Mensagens
+                    <input type="checkbox">
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRIVACIDADE -->
+        <section id="privacidade" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('configuracoes')">←</button>
+
+                <h2>Privacidade</h2>
+
+            </header>
+
+            <div class="sobre-conteudo">
+
+                <h3>Seus dados</h3>
+
+                <p>
+                    Seus dados são utilizados para permitir o funcionamento
+                    do aplicativo e facilitar as doações.
+                </p>
+
+                <p>
+                    Esta versão é um protótipo escolar. As informações
+                    são armazenadas localmente no navegador.
+                </p>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="limparDados()"
+                >
+                    Limpar dados locais
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- IDIOMA -->
+        <section id="idioma" class="tela">
+
+            <header class="pagina-header">
+
+                <button class="voltar" onclick="irPara('configuracoes')">←</button>
+
+                <h2>Idioma</h2>
+
+            </header>
+
+            <div class="config-lista">
+
+                <button class="config-item" onclick="alert('Idioma selecionado: Português')">
+                    Português
+                    <span>✓</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- MENSAGEM -->
+        <div id="mensagem" class="mensagem"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
